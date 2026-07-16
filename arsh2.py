@@ -158,6 +158,7 @@ if opt=="📜Overview":
         st.metric("Total Columns",len(df1.columns))
     with col5:
       st.metric("Total Regions",df1["Region"].nunique())
+    st.divider()
     st.markdown("""
      <style>
      .card{
@@ -165,13 +166,17 @@ if opt=="📜Overview":
      border-radius:15px;
      padding:18px;
      text-align:center;
-     box-shadow:0 0 8px
-     rgba(239,83,80,0.35), 0 0 18px
-     rgba(239,83,80,0.25), 0 0 30px
-     rgba(239,83,80,0.15),
-        
-     border:2px solid #E8EAF6;
-     height:280px;
+     box-shadow:0 0 10px
+     rgba(239,83,80,0.35), 0 0 20px
+     rgba(239,83,80,0.25), 0 0 35px
+     rgba(239,83,80,0.2);
+     }
+     .card: hover{
+     transform: translateY(-5px);
+     box shadow: 0 0 15px
+     rgba(239,83,80,0.7), 0 0 30px
+     rgba(239,83,80,0.5), 0 0 50px
+     rgba(239,83,80,0.35);
      }
      .card h3{
      color:#2E7D32;
@@ -180,10 +185,12 @@ if opt=="📜Overview":
      color:#555;
      font-size:17px;
      line-height:1.2;
+     min-height=290px
+
      }
      </style>
      """, unsafe_allow_html=True)
-    col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3 = st.columns(3)
     with col1:
          st.markdown("""
          <div class="card">
@@ -217,15 +224,7 @@ if opt=="📜Overview":
          <p>🌿 Peaty</p>
          </div>
          """, unsafe_allow_html=True)
-    with col4:
-         st.markdown("""
-         <div class="card">
-         <h3>🌦️ Weather</h3>
-         <p>☀️ Sunny</p>
-         <p>☁️ Cloudy</p>
-         <p>🌧️ Rainy</p>
-         </div>
-         """, unsafe_allow_html=True)
+    st.divider()
 # Top 5 districts by total production
     top5 = (
     df.groupby("District_Name", as_index=False)["Production"]
@@ -277,6 +276,7 @@ if opt=="📜Overview":
     yaxis=dict(title="District",title_font=dict(size=26),tickfont=dict(size=20),showgrid=False),
     margin=dict(l=20, r=20, t=60, b=20))
     st.plotly_chart(fig, use_container_width=True)
+    st.divider()
     import streamlit as st
     import pandas as pd
     import plotly.express as px
