@@ -3,4 +3,4 @@ pandas
 plotly
 seaborn
 streamlit-option-menu
-AgGrid
+streamlit-aggrid==1.2.1.post2
